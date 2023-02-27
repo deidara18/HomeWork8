@@ -1,7 +1,6 @@
 import json
 
 
-directory = [{}]
 
 
 def save():
@@ -46,20 +45,31 @@ def del_info():
 
 
 
-def Search():
-    directory = [{"FirstName": "Иванов", "SecondName": "Иван", "Phone": "89340254185"}, {"FirstName": "Петров", "SecondName": "Петр", "Phone": "89528317456"}]
-    name1 = input("Введите имя: ")
-    for k, v in directory:
-        if directory[k]['SecondName'] == name1:
-            print(directory[k]['Phone'])
-            if directory[v]["FirstName"] == name1:
-                print(directory[v]['Phone'])
-                return directory.append(name1)
-            else:
-                print('нет такого значения')
 
 
+def SearchNum():
+    directory = [{1: {"FirstName": "Иванов", "SecondName": "Иван", "Phone": "89340254185"}},
+                 {2: {"FirstName": "Петров", "SecondName": "Петр", "Phone": "89528317456"}},]
+    phones = input("Введите номер телефона: ")
+    try:
+        for i in directory:
+            for p in i.values():
+                if p.get("Phone") == phones:
+                    print(p.get("FirstName"))
+    except:
+        print("Некорректно введен номер")
 
+def SearchName():
+    directory = [{1: {"FirstName": "Иванов", "SecondName": "Иван", "Phone": "89340254185"}},
+                 {2: {"FirstName": "Петров", "SecondName": "Петр", "Phone": "89528317456"}}]
+    name = input("Введите Фамилию: ")
+    try:
+        for i in directory:
+            for p in i.values():
+                if p.get("FirstName") == name:
+                    print(p.get("SecondName"))
+    except:
+        print("Некорректно введена фамилия")
 
 
 
